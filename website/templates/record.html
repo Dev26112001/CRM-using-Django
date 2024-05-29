@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1 class="text-center my-4" style="font-weight: bold;">Customer Records: {{ customer_record.id }}</h1>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<style>
+    .list-group-item:hover {
+        background-color: #f0f0f0; /* Change this color to whatever you prefer */
+        cursor: pointer; /* Optional: changes cursor to pointer on hover */
+    }
+    .card-custom {
+        max-width: 25rem;
+        margin: auto;
+        border-radius: 15px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+    .card-header-custom {
+        background-color: #343a40;
+        color: white;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        font-weight: bold;
+    }
+    .card-body-custom {
+        background-color: #ffffff;
+        color: #333333;
+    }
+    .list-group-item-custom {
+        color: #555555;
+        font-weight: bold;
+    }
+    .btn-back {
+        background-color: yellow;
+        color: black;
+        border-radius: 20%;
+        padding: 5px;
+        font-weight: bold;
+    }
+    .btn-back:hover {
+        background-color: #ffd700;
+    }
+</style>
+
+<div class="card text-bg-dark mb-3 border-dark card-custom">
+    <div class="card-header card-header-custom">
+        <h5 class="card-title">{{ customer_record.first_name }} {{ customer_record.last_name }}</h5>
+    </div>
+    <div class="card-body card-body-custom">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item list-group-item-custom"><strong>ID :</strong> {{ customer_record.id }}</li>
+            <li class="list-group-item list-group-item-custom"><strong>Email :</strong> {{ customer_record.email }}</li>
+            <li class="list-group-item list-group-item-custom"><strong>Address :</strong> {{ customer_record.address }}</li>
+            <li class="list-group-item list-group-item-custom"><strong>City :</strong> {{ customer_record.city }}</li>
+            <li class="list-group-item list-group-item-custom"><strong>State :</strong> {{ customer_record.state }}</li>
+            <li class="list-group-item list-group-item-custom"><strong>ZipCode :</strong> {{ customer_record.zipcode }}</li>
+            <li class="list-group-item list-group-item-custom"><strong>Created_at :</strong> {{ customer_record.created_at }}</li>
+        </ul>
+    </div>
+    <div class="card-footer text-center">
+        <a href="{% url 'home' %}" class="btn btn-back">Back</a>
+        <a href="{% url 'delete_record' customer_record.id %}" class="btn btn-back">Delete</a>
+        <a href="{%url 'update_record' customer_record.id %}" class="btn btn-back"">Update</a>
+    </div>
+    
+</div>
+{% endblock %}
